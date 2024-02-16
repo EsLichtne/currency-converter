@@ -13,6 +13,7 @@ const button = document.querySelector('.currency-converter__button');
 const resultText = document.querySelector('.currency-converter__result');
 const errorText = document.querySelector('.currency-converter__error');
 
+// Ограничивает частоту вызова функции
 function throttle(callback, delayBetweenFrames = 1000) {
   let timeoutId, lastCallTime;
 
@@ -28,6 +29,7 @@ function throttle(callback, delayBetweenFrames = 1000) {
   };
 };
 
+// Получает данные
 async function fetchData(url) {
   try {
     const response = await fetch(url);
@@ -37,6 +39,7 @@ async function fetchData(url) {
   }
 }
 
+// Создаёт список валют
 function renderOptionsList(options, element) {
   const fragment = document.createDocumentFragment();
 
@@ -48,6 +51,7 @@ function renderOptionsList(options, element) {
   element.appendChild(fragment);
 }
 
+// Отрисовывает список валют
 async function renderOptions() {
   try {
     const data = await fetchData(DATA_URL);
@@ -75,6 +79,7 @@ async function renderOptions() {
   }
 }
 
+// Выполняет конвертацию валют
 async function convertCurrency() {
   const fromCurrencyCode = selectFrom.dataset.value;
   const toCurrencyCode = selectTo.dataset.value;
@@ -108,21 +113,25 @@ async function convertCurrency() {
   }
 }
 
+// Показывает выпадающий список
 function showSelect(select) {
   select.classList.add('select--shown');
   select.classList.remove('select--hide');
 }
 
+// Скрывает выпадающий список
 function hideSelect(select) {
   select.classList.remove('select--shown');
   select.classList.add('select--hide');
 }
 
+// Переключает видимость выпадающего списка
 function toggleSelect(select) {
   select.classList.toggle('select--hide');
   select.classList.toggle('select--shown');
 }
 
+// Создаёт элемент валюты
 function createOption(currency, element) {
   const option = document.createElement('li');
 
@@ -133,6 +142,7 @@ function createOption(currency, element) {
   element.appendChild(option);
 };
 
+// Устанавливает обработчики событий для выпадающего списка
 function setSelectState(select) {
   select.addEventListener('click', (event) => {
     if (event.target === select) {
@@ -147,6 +157,7 @@ function setSelectState(select) {
   })
 }
 
+// Отмечает элемент в выпадающем списке как выбранный
 function selectOption(select, field, option) {
   const container = select.children[1];
 
@@ -161,6 +172,7 @@ function selectOption(select, field, option) {
   option.setAttribute('aria-selected', true);
 }
 
+// Устанавливает обработчики событий для элементов выпадающего списка
 function setSelectOption(select, field) {
   const container = select.children[1];
 
@@ -177,6 +189,7 @@ function setSelectOption(select, field) {
   }
 }
 
+// Устанавливает значение выпадающего списка по значению в поле ввода
 function setOptionValue(field, select) {
   const container = select.children[1];
 
@@ -197,6 +210,7 @@ function setOptionValue(field, select) {
   }, 1000));
 }
 
+// Сортирует валюты по коду
 function sortSelect(select) {
   const container = select.children[1];
   const fragment = document.createDocumentFragment();
@@ -211,6 +225,7 @@ function sortSelect(select) {
   container.appendChild(fragment);
 }
 
+// Скрывает выпадающие списки
 function onDocumentClick(event) {
   const isFromCurrency = fromCurrency.contains(event.target);
   const isToCurrency = toCurrency.contains(event.target);
@@ -223,6 +238,7 @@ function onDocumentClick(event) {
   }
 }
 
+// Выполняет конвертацию / скрывает выпадающие списки
 function onDocumentKeydown(event) {
   if (event.key && event.target === amount && event.key.startsWith('Ent')) {
     convertCurrency();
