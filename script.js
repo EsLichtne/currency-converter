@@ -177,6 +177,26 @@ function setSelectOption(select, field) {
   }
 }
 
+function setOptionValue(field, select) {
+  const container = select.children[1];
+
+  field.addEventListener('input', throttle(() => {
+    showSelect(select);
+
+    for (let option of container.children) {
+      if (option.textContent.toLowerCase().includes(field.value.toLowerCase())) {
+        container.insertBefore(option, container.firstChild);
+      }
+    }
+
+    if (!field.value) {
+      sortSelect(select);
+    }
+
+    container.scrollTop = 0;
+  }, 1000));
+}
+
 function sortSelect(select) {
   const container = select.children[1];
   const fragment = document.createDocumentFragment();
