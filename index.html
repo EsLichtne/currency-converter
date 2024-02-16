@@ -11,7 +11,45 @@
 </head>
 
 <body class="page__body">
+  <div class="page__container">
+    <section class="page__content currency-converter">
+      <h1 class="currency-converter__title">Конвертер валют</h1>
+      <label class="currency-converter__label" for="amount">Введите значение</label>
+      <input class="currency-converter__amount field" type="number" id="amount" placeholder="100" required>
 
+      <label class="visually-hidden" for="field-value-from">Введите валюту из которой нужно перевести или выберите
+        значение из
+        списка.</label>
+      <div class="currency-converter__select currency-converter__select--from select select--from select--hide">
+        <input class="selelct__field field" role="combobox" aria-expanded="false" aria-controls="from-currency"
+          aria-activedescendant="USD" type="text" id="field-value-from" placeholder="USD">
+        <ul class="select__options-list" id="from-currency" aria-haspopup="listbox" aria-owns="from-currency">
+          <li class="select__option select__option--selected" data-value="USD" tabindex="0" aria-selected="true">🇺🇸
+            USD - United States
+            dollar</li>
+        </ul>
+      </div>
+
+      <p class="currency-converter__capture" aria-hidden="true">&#8681;</p>
+
+      <label class="visually-hidden" for="field-value-to">Введите валюту в которую нужно перевести или выберите значение
+        из
+        списка.</label>
+      <div class="currency-converter__select select select--to select--hide">
+        <input class="selelct__field field" role="combobox" aria-expanded="false" aria-controls="to-currency"
+          aria-activedescendant="RUB" type="text" id="field-value-to" placeholder="RUB">
+        <ul class="select__options-list" id="to-currency" aria-haspopup="listbox" aria-owns="to-currency">
+          <li class="select__option select__option--selected" data-value="RUB" tabindex="0" aria-selected="true">🇷🇺
+            RUB - Russian ruble
+          </li>
+        </ul>
+      </div>
+
+      <button class="currency-converter__button">Конвертировать</button>
+      <p class="currency-converter__result bottom-caption" aria-live="polite"></p>
+      <p class="currency-converter__error bottom-caption" aria-live="polite"></p>
+    </section>
+  </div>
 </body>
 
 </html>
