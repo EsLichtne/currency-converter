@@ -188,3 +188,28 @@ input[type="number"] {
     background: #000;
   }
 }
+
+/* Элементы */
+
+.page {
+  font-size: min((calc(100vw / 320 * 10)), 48px);
+  scrollbar-gutter: stable;
+}
+
+.page__body {
+  height: 100vh;
+  margin: 0;
+  font-family: var(--font-primary);
+  background-color: var(--dark);
+}
+
+.page__container {
+  display: grid;
+  place-content: center;
+  min-height: 100%;
+  padding: min(3rem, 40px);
+}
+
+.page__content {
+  width: min(32rem, 500px);
+}
