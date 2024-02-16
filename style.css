@@ -213,3 +213,77 @@ input[type="number"] {
 .page__content {
   width: min(32rem, 500px);
 }
+
+.select {
+  position: relative;
+  font-family: var(--font-emoji);
+
+  &::after {
+    content: "";
+    top: 50%;
+    right: 12px;
+    transform: translateY(-50%);
+    position: absolute;
+    padding: min(2.2rem, 30px) min(1.6rem, 22px);
+    background-image: url("image/tick.svg");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: min(3rem, 41px) min(3rem, 41px);
+    cursor: url("image/cursor-pointer.svg"), pointer;
+    transition: transform 0.3s ease-in-out;
+  }
+}
+
+.select--shown::after {
+  transform: translateY(-50%) rotate(180deg);
+}
+
+.select--hide .select__options-list {
+  display: none;
+}
+
+.select--shown .select__options-list {
+  display: block;
+  z-index: 1;
+}
+
+.selelct__field {
+  width: 100%;
+}
+
+.select__options-list {
+  position: absolute;
+  height: auto;
+  max-height: min(30rem, 350px);
+  margin: 0;
+  margin-top: 12px;
+  padding: 0;
+  list-style: none;
+  text-align: left;
+  outline: 2px solid var(--dark);
+  border-radius: 8px;
+  overflow-y: scroll;
+  scroll-snap-type: y mandatory;
+  scroll-behavior: smooth;
+}
+
+.select__option {
+  padding: min(1.6rem, 18px);
+  font-size: min(1.8rem, 22px);
+  font-family: inherit;
+  line-height: 130%;
+  background-color: var(--light);
+  cursor: url("image/cursor-pointer.svg"), pointer;
+  scroll-snap-align: start;
+
+  &:hover,
+  &:focus,
+  &:active,
+  &:focus-visible {
+    background-color: var(--selected);
+  }
+}
+
+.select__option--selected {
+  background-color: var(--selected);
+}
