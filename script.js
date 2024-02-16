@@ -47,3 +47,17 @@ function toggleSelect(select) {
   select.classList.toggle('select--hide');
   select.classList.toggle('select--shown');
 }
+
+function setSelectState(select) {
+  select.addEventListener('click', (event) => {
+    if (event.target === select) {
+      toggleSelect(select);
+    }
+  })
+
+  select.addEventListener('keydown', (event) => {
+    if (event.key && event.key.startsWith('Ent')) {
+      toggleSelect(select);
+    }
+  })
+}
