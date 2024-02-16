@@ -33,6 +33,33 @@ function renderOptionsList(options, element) {
   element.appendChild(fragment);
 }
 
+async function renderOptions() {
+  try {
+    const data = await fetchData(DATA_URL);
+
+    const result = data
+      .filter((country) => Object.keys(country.currencies).length > 0)
+      .map((country) => ({
+        name: Object.values(country.currencies)[0].name,
+        code: Object.keys(country.currencies)[0],
+        flag: country.flag,
+      }))
+      .sort((a, b) => a.code.localeCompare(b.code));
+
+    fromCurrency.innerHTML = '';
+    toCurrency.innerHTML = '';
+
+    renderOptionsList(result, fromCurrency);
+    renderOptionsList(result, toCurrency);
+
+    setSelectOption(selectFrom, fieldValueFrom);
+    setSelectOption(selectTo, fieldValueTo);
+
+  } catch (error) {
+    errorText.textContent = 'Произошла ошибка, повторите попытку позже';
+  }
+}
+
 async function convertCurrency() {
   const fromCurrencyCode = selectFrom.dataset.value;
   const toCurrencyCode = selectTo.dataset.value;
