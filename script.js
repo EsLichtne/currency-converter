@@ -37,3 +37,8 @@ function showSelect(select) {
   select.classList.add('select--shown');
   select.classList.remove('select--hide');
 }
+
+function hideSelect(select) {
+  select.classList.remove('select--shown');
+  select.classList.add('select--hide');
+}
