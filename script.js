@@ -33,6 +33,39 @@ function renderOptionsList(options, element) {
   element.appendChild(fragment);
 }
 
+async function convertCurrency() {
+  const fromCurrencyCode = selectFrom.dataset.value;
+  const toCurrencyCode = selectTo.dataset.value;
+  const amountValue = amount.value;
+  const fieldValueFromValue = fieldValueFrom.value;
+  const fieldValueToValue = fieldValueTo.value;
+
+  try {
+    if (amountValue && parseFloat(amountValue) > 0 && fieldValueFromValue && fieldValueToValue) {
+      button.disabled = true;
+      button.innerHTML = `<span class='loader'></span>`;
+      const url = `${BASE_URL}/${API_KEY}/pair/${fromCurrencyCode}/${toCurrencyCode}`;
+      const data = await fetchData(url);
+      const conversionResult = (amountValue * data.conversion_rate).toFixed(2);
+
+      resultText.innerHTML = `${amountValue} ${fromCurrencyCode} = ${conversionResult} ${toCurrencyCode}`;
+      amount.value = '';
+      errorText.innerHTML = '';
+    } else {
+      errorText.textContent = 'Введите значение';
+
+      !amountValue ? amount.focus() :
+        !fieldValueFromValue ? fieldValueFrom.focus() :
+          !fieldValueToValue && fieldValueTo.focus();
+    }
+  } catch (error) {
+    errorText.textContent = 'Произошла ошибка, повторите попытку позже';
+  } finally {
+    button.disabled = false;
+    button.textContent = 'Конвертировать';
+  }
+}
+
 function showSelect(select) {
   select.classList.add('select--shown');
   select.classList.remove('select--hide');
