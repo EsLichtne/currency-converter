@@ -175,3 +175,16 @@ function sortSelect(select) {
 
   container.appendChild(fragment);
 }
+
+function onDocumentClick(event) {
+  const isFromCurrency = fromCurrency.contains(event.target);
+  const isToCurrency = toCurrency.contains(event.target);
+  const isSelectFrom = selectFrom.contains(event.target);
+  const isSelectTo = selectTo.contains(event.target);
+
+  if (!isFromCurrency && !isToCurrency && !isSelectFrom && !isSelectTo) {
+    hideSelect(selectFrom);
+    hideSelect(selectTo);
+  }
+}
+
