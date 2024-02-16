@@ -287,3 +287,83 @@ input[type="number"] {
 .select__option--selected {
   background-color: var(--selected);
 }
+
+.currency-converter {
+  display: grid;
+  justify-items: center;
+  padding: min(3rem, 40px);
+  text-align: center;
+  background-color: var(--light);
+  border-radius: 16px;
+}
+
+.currency-converter__title {
+  max-width: 80%;
+  margin: 0;
+  margin-bottom: min(2.4rem, 26px);
+  font-size: min(3.6rem, 48px);
+  line-height: 130%;
+  text-wrap: balance;
+}
+
+.currency-converter__label {
+  margin-bottom: min(1rem, 12px);
+  font-size: min(1.6rem, 22px);
+  line-height: 130%;
+  text-transform: uppercase;
+}
+
+.currency-converter__amount {
+  width: min(20rem, 275px);
+  margin-bottom: min(3.2rem, 38px);
+}
+
+.currency-converter__select {
+  width: min(25.5rem, 350px);
+}
+
+.currency-converter__select--from {
+  margin-bottom: min(1rem, 12px);
+}
+
+.currency-converter__capture {
+  margin: 0;
+  margin-bottom: min(1rem, 12px);
+  font-size: min(2.4rem, 32px);
+  line-height: 100%;
+  text-transform: uppercase;
+}
+
+.currency-converter__button {
+  display: grid;
+  place-content: center;
+  min-width: min(20.5rem, 282px);
+  min-height: min(5.6rem, 70px);
+  margin-top: min(3.2rem, 36px);
+  margin-bottom: min(2rem, 26px);
+  padding: min(1.6rem, 20px);
+  font-family: inherit;
+  font-size: min(1.6rem, 22px);
+  line-height: 130%;
+  text-transform: uppercase;
+  color: var(--light);
+  background-color: var(--dark);
+  outline: 2px solid var(--dark);
+  border: none;
+  border-radius: 8px;
+  cursor: url("image/cursor-pointer.svg"), pointer;
+  transition: all 0.3s linear;
+
+  &:hover,
+  &:focus-visible,
+  &:active {
+    color: var(--dark);
+    background-color: var(--light);
+  }
+
+  &:disabled {
+    color: var(--dark);
+    background-color: var(--light);
+    cursor: url("image/cursor-disabled.svg"), not-allowed;
+  }
+}
