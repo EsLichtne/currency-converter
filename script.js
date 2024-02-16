@@ -161,3 +161,17 @@ function setSelectOption(select, field) {
     })
   }
 }
+
+function sortSelect(select) {
+  const container = select.children[1];
+  const fragment = document.createDocumentFragment();
+  const options = Array.from(container.children);
+
+  options.sort((a, b) => a.dataset.value.localeCompare(b.dataset.value));
+
+  for (let option of options) {
+    fragment.appendChild(option);
+  }
+
+  container.appendChild(fragment);
+}
