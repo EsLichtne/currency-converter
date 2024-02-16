@@ -324,6 +324,7 @@ input[type="number"] {
 
 .currency-converter__select--from {
   margin-bottom: min(1rem, 12px);
+  z-index: 2;
 }
 
 .currency-converter__capture {
