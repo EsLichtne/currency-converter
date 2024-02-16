@@ -108,6 +108,16 @@ function toggleSelect(select) {
   select.classList.toggle('select--shown');
 }
 
+function createOption(currency, element) {
+  const option = document.createElement('li');
+
+  option.classList.add('select__option');
+  option.tabIndex = '0';
+  option.textContent = `${currency.flag} ${currency.code} - ${currency.name}`;
+  option.dataset.value = currency.code;
+  element.appendChild(option);
+};
+
 function setSelectState(select) {
   select.addEventListener('click', (event) => {
     if (event.target === select) {
