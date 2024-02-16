@@ -40,6 +40,11 @@
   cursor: url("image/cursor.svg"), auto;
 }
 
+::-moz-selection {
+  color: var(--light);
+  background-color: var(--dark);
+}
+
 ::selection {
   color: var(--light);
   background-color: var(--dark);
@@ -75,6 +80,7 @@
   border: 0;
   padding: 0;
   white-space: nowrap;
+  -webkit-clip-path: inset(100%);
   clip-path: inset(100%);
   clip: rect(0 0 0 0);
   overflow: hidden;
@@ -91,6 +97,22 @@
   border-radius: 8px;
   cursor: url("image/cursor-text.svg"), text;
   transition: all 0.3s linear;
+
+  &::-webkit-input-placeholder {
+    color: rgba(27, 27, 27, 0.6);
+  }
+
+  &::-moz-placeholder {
+    color: rgba(27, 27, 27, 0.6);
+  }
+
+  &:-ms-input-placeholder {
+    color: rgba(27, 27, 27, 0.6);
+  }
+
+  &::-ms-input-placeholder {
+    color: rgba(27, 27, 27, 0.6);
+  }
 
   &::placeholder {
     color: rgba(27, 27, 27, 0.6);
@@ -116,11 +138,38 @@ input[type="number"] {
   width: min(1.4rem, 16px);
   aspect-ratio: 1;
   border-radius: 50%;
+  -webkit-animation-name: loaderMobile;
   animation-name: loaderMobile;
+  -webkit-animation-duration: 1s;
   animation-duration: 1s;
+  -webkit-animation-iteration-count: infinite;
   animation-iteration-count: infinite;
+  -webkit-animation-timing-function: linear;
   animation-timing-function: linear;
+  -webkit-animation-direction: alternate;
   animation-direction: alternate;
+}
+
+@-webkit-keyframes loaderMobile {
+  0% {
+    box-shadow: min(2rem, 22px) 0 #000, max(-2rem, -22px) 0 #0002;
+    background: #000;
+  }
+
+  33% {
+    box-shadow: min(2rem, 22px) 0 #000, max(-2rem, -22px) 0 #0002;
+    background: #0002;
+  }
+
+  66% {
+    box-shadow: min(2rem, 22px) 0 #0002, max(-2rem, -22px) 0 #000;
+    background: #0002;
+  }
+
+  100% {
+    box-shadow: min(2rem, 22px) 0 #0002, max(-2rem, -22px) 0 #000;
+    background: #000;
+  }
 }
 
 @keyframes loaderMobile {
@@ -145,6 +194,28 @@ input[type="number"] {
   }
 }
 
+@-webkit-keyframes loaderTablet {
+  0% {
+    box-shadow: min(2.5rem, 30px) 0 #000, max(-2.5rem, -30px) 0 #0002;
+    background: #000;
+  }
+
+  33% {
+    box-shadow: min(2.5rem, 30px) 0 #000, max(-2.5rem, -30px) 0 #0002;
+    background: #0002;
+  }
+
+  66% {
+    box-shadow: min(2.5rem, 30px) 0 #0002, max(-2.5rem, -30px) 0 #000;
+    background: #0002;
+  }
+
+  100% {
+    box-shadow: min(2.5rem, 30px) 0 #0002, max(-2.5rem, -30px) 0 #000;
+    background: #000;
+  }
+}
+
 @keyframes loaderTablet {
   0% {
     box-shadow: min(2.5rem, 30px) 0 #000, max(-2.5rem, -30px) 0 #0002;
@@ -163,6 +234,28 @@ input[type="number"] {
 
   100% {
     box-shadow: min(2.5rem, 30px) 0 #0002, max(-2.5rem, -30px) 0 #000;
+    background: #000;
+  }
+}
+
+@-webkit-keyframes loaderDesktop {
+  0% {
+    box-shadow: min(2.5rem, 34px) 0 #000, max(-2.5rem, -34px) 0 #0002;
+    background: #000;
+  }
+
+  33% {
+    box-shadow: min(2.5rem, 34px) 0 #000, max(-2.5rem, -34px) 0 #0002;
+    background: #0002;
+  }
+
+  66% {
+    box-shadow: min(2.5rem, 34px) 0 #0002, max(-2.5rem, -34px) 0 #000;
+    background: #0002;
+  }
+
+  100% {
+    box-shadow: min(2.5rem, 34px) 0 #0002, max(-2.5rem, -34px) 0 #000;
     background: #000;
   }
 }
@@ -204,6 +297,7 @@ input[type="number"] {
 }
 
 .page__container {
+  display: -ms-grid;
   display: grid;
   place-content: center;
   min-height: 100%;
@@ -222,6 +316,7 @@ input[type="number"] {
     content: "";
     top: 50%;
     right: 12px;
+    -webkit-transform: translateY(-50%);
     transform: translateY(-50%);
     position: absolute;
     padding: min(2.2rem, 30px) min(1.6rem, 22px);
@@ -230,11 +325,14 @@ input[type="number"] {
     background-position: center;
     background-size: min(3rem, 41px) min(3rem, 41px);
     cursor: url("image/cursor-pointer.svg"), pointer;
+    transition: -webkit-transform 0.3s ease-in-out;
     transition: transform 0.3s ease-in-out;
+    transition: transform 0.3s ease-in-out, -webkit-transform 0.3s ease-in-out;
   }
 }
 
 .select--shown::after {
+  -webkit-transform: translateY(-50%) rotate(180deg);
   transform: translateY(-50%) rotate(180deg);
 }
 
@@ -263,6 +361,7 @@ input[type="number"] {
   outline: 2px solid var(--dark);
   border-radius: 8px;
   overflow-y: scroll;
+  -ms-scroll-snap-type: y mandatory;
   scroll-snap-type: y mandatory;
   scroll-behavior: smooth;
 }
@@ -289,6 +388,7 @@ input[type="number"] {
 }
 
 .currency-converter {
+  display: -ms-grid;
   display: grid;
   justify-items: center;
   padding: min(3rem, 40px);
@@ -336,6 +436,7 @@ input[type="number"] {
 }
 
 .currency-converter__button {
+  display: -ms-grid;
   display: grid;
   place-content: center;
   min-width: min(20.5rem, 282px);
