@@ -243,3 +243,7 @@ setSelectState(selectTo);
 setOptionValue(fieldValueFrom, selectFrom);
 
 setOptionValue(fieldValueTo, selectTo);
+
+document.addEventListener('click', onDocumentClick);
+
+document.addEventListener('keydown', onDocumentKeydown);
