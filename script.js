@@ -247,3 +247,7 @@ setOptionValue(fieldValueTo, selectTo);
 document.addEventListener('click', onDocumentClick);
 
 document.addEventListener('keydown', onDocumentKeydown);
+
+button.addEventListener('click', () => {
+  convertCurrency();
+})
