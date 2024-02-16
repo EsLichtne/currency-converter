@@ -108,3 +108,19 @@ function selectOption(select, field, option) {
   option.classList.add('select__option--selected');
   option.setAttribute('aria-selected', true);
 }
+
+function setSelectOption(select, field) {
+  const container = select.children[1];
+
+  for (let option of container.children) {
+    option.addEventListener('click', () => {
+      selectOption(select, field, option);
+      hideSelect(select);
+    });
+    option.addEventListener('keydown', (event) => {
+      if (event.key && event.key.startsWith('Ent')) {
+        selectOption(select, field, option);
+      }
+    })
+  }
+}
