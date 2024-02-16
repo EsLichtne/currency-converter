@@ -32,3 +32,8 @@ function renderOptionsList(options, element) {
   element.innerHTML = '';
   element.appendChild(fragment);
 }
+
+function showSelect(select) {
+  select.classList.add('select--shown');
+  select.classList.remove('select--hide');
+}
