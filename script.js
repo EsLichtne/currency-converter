@@ -233,3 +233,13 @@ function onDocumentKeydown(event) {
     hideSelect(selectTo);
   }
 }
+
+renderOptions();
+
+setSelectState(selectFrom);
+
+setSelectState(selectTo);
+
+setOptionValue(fieldValueFrom, selectFrom);
+
+setOptionValue(fieldValueTo, selectTo);
