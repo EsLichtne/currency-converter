@@ -13,6 +13,21 @@ const button = document.querySelector('.currency-converter__button');
 const resultText = document.querySelector('.currency-converter__result');
 const errorText = document.querySelector('.currency-converter__error');
 
+function throttle(callback, delayBetweenFrames = 1000) {
+  let timeoutId, lastCallTime;
+
+  return (...rest) => {
+    const elapsedTime = Date.now() - lastCallTime;
+    const delay = Math.max(delayBetweenFrames - elapsedTime, 0);
+
+    window.clearTimeout(timeoutId);
+    timeoutId = window.setTimeout(() => {
+      callback(...rest);
+      lastCallTime = Date.now();
+    }, delay);
+  };
+};
+
 async function fetchData(url) {
   try {
     const response = await fetch(url);
