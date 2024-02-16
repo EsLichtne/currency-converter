@@ -188,3 +188,13 @@ function onDocumentClick(event) {
   }
 }
 
+function onDocumentKeydown(event) {
+  if (event.key && event.target === amount && event.key.startsWith('Ent')) {
+    convertCurrency();
+  }
+
+  if (event.key && event.key.startsWith('Esc')) {
+    hideSelect(selectFrom);
+    hideSelect(selectTo);
+  }
+}
