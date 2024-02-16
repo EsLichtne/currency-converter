@@ -21,3 +21,14 @@ async function fetchData(url) {
     throw new Error('Произошла ошибка, повторите попытку позже');
   }
 }
+
+function renderOptionsList(options, element) {
+  const fragment = document.createDocumentFragment();
+
+  options.forEach((currency) => {
+    createOption(currency, fragment);
+  });
+
+  element.innerHTML = '';
+  element.appendChild(fragment);
+}
