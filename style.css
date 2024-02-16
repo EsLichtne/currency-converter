@@ -367,3 +367,20 @@ input[type="number"] {
     cursor: url("image/cursor-disabled.svg"), not-allowed;
   }
 }
+
+.bottom-caption {
+  margin: 0;
+  font-size: min(1.8rem, 22px);
+  line-height: 130%;
+  font-weight: 700;
+  text-transform: uppercase;
+  text-wrap: pretty;
+}
+
+.currency-converter__result {
+  margin-bottom: min(1rem, 14px);
+}
+
+.currency-converter__error {
+  color: var(--error);
+}
