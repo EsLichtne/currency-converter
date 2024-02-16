@@ -12,3 +12,12 @@ const toCurrency = selectTo.querySelector('#to-currency'); // список ва�
 const button = document.querySelector('.currency-converter__button');
 const resultText = document.querySelector('.currency-converter__result');
 const errorText = document.querySelector('.currency-converter__error');
+
+async function fetchData(url) {
+  try {
+    const response = await fetch(url);
+    return response.json();
+  } catch (error) {
+    throw new Error('Произошла ошибка, повторите попытку позже');
+  }
+}
