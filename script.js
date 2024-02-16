@@ -42,3 +42,8 @@ function hideSelect(select) {
   select.classList.remove('select--shown');
   select.classList.add('select--hide');
 }
+
+function toggleSelect(select) {
+  select.classList.toggle('select--hide');
+  select.classList.toggle('select--shown');
+}
