@@ -94,3 +94,17 @@ function setSelectState(select) {
     }
   })
 }
+
+function selectOption(select, field, option) {
+  const container = select.children[1];
+
+  for (let previousOption of container.children) {
+    previousOption.classList.remove('select__option--selected');
+    previousOption.removeAttribute('aria-selected');
+  }
+
+  select.dataset.value = option.dataset.value;
+  field.value = option.textContent;
+  option.classList.add('select__option--selected');
+  option.setAttribute('aria-selected', true);
+}
